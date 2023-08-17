@@ -3,20 +3,11 @@ package AgendaDeContatos;
 import java.time.LocalDate;
 
 public class Main {
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-		LocalDate nasc_robert = LocalDate.of(2003, 12, 31);
-		Contato roberto = new Contato("roberto",nasc_robert,19,"robertin@ff.com");
-		Contato duda = new Contato("edudarda",nasc_robert,21,"duda@frango.com");
-		
-		AgendaJSON agendajson = new AgendaJSON();
-		agendajson.adicionarContato(roberto);	
-		agendajson.adicionarContato(duda);
-		
-		agendajson.gravarJSON();
-		
-	}
-
+    public static void main(String[] args) {
+        Contato contato = new Contato("João", LocalDate.of(1990, 1, 15), "123456789", "joao@example.com\n");
+        Contato contato2 = new Contato("Mateus", LocalDate.of(2003, 8, 28), "47988452010", "mateusmotorama03@gmail.com");
+        AgendaXML agendaXML = new AgendaXML(contato);
+        agendaXML.criarXML(contato);
+        agendaXML.criarXML(contato2);
+    }
 }
