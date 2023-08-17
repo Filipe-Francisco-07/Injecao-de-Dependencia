@@ -6,4 +6,5 @@
  *
  */
 module InjecaoDeDependência {
+	requires java.xml;
 }

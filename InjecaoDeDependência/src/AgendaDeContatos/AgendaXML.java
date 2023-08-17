@@ -1,9 +1,9 @@
 package AgendaDeContatos;
 
-import java.io.File;
+import java.util.List;
+import java.util.ArrayList;
 import java.io.FileWriter;
 import java.io.IOException;
-//import java.time.LocalDate;
 import javax.xml.parsers.*;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerException;
@@ -13,19 +13,19 @@ import javax.xml.transform.stream.StreamResult;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-public class AgendaXML {
+public class AgendaXML extends Agenda {
 	
-	private Contato contato;
+	private List<Contato> contato;
 	
-	public AgendaXML(Contato contato) {
-		this.contato = contato;
+	public AgendaXML() {
+		contato = new ArrayList<Contato>();
 	}
 	
-    public Contato getContato() {
+    public List<Contato> getContato() {
 		return contato;
 	}
-	public void setContato(Contato contato) {
-		this.contato = contato;
+	public void adicionarContato(Contato contato) {
+		this.contato.add(contato);
 	}
 
 	public void criarXML(Contato contato) {

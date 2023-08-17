@@ -5,10 +5,10 @@ import java.time.LocalDate;
 public class Contato {
 	private String nome;
 	private LocalDate datanascimento;
-	private int telefone;
+	private String telefone;
 	private String email;
 	
-	public Contato(String nome, LocalDate data, int telefone, String email) {
+	public Contato(String nome, LocalDate data, String telefone, String email) {
 		this.nome = nome;
 		this.datanascimento = data;
 		this.telefone = telefone;
@@ -31,11 +31,11 @@ public class Contato {
 		this.datanascimento = datanascimento;
 	}
 
-	public int getTelefone() {
+	public String getTelefone() {
 		return telefone;
 	}
 
-	public void setTelefone(int telefone) {
+	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
 
