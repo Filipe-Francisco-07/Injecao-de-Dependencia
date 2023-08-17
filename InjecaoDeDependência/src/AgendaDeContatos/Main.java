@@ -9,13 +9,13 @@ public class Main {
 
 		LocalDate nasc_robert = LocalDate.of(2003, 12, 31);
 		Contato roberto = new Contato("roberto",nasc_robert,19,"robertin@ff.com");
+		Contato duda = new Contato("edudarda",nasc_robert,21,"duda@frango.com");
 		
-		System.out.println(nasc_robert.getMonth());
+		AgendaJSON agendajson = new AgendaJSON();
+		agendajson.adicionarContato(roberto);	
+		agendajson.adicionarContato(duda);
 		
-		Agenda agenda = new Agenda();
-		agenda.adicionarContato(roberto);		
-		
-		agenda.verLista();		
+		agendajson.gravarJSON();
 		
 	}
 

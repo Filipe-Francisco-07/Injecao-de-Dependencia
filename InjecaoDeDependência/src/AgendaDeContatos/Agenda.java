@@ -20,8 +20,6 @@ public class Agenda {
 		for(Contato contato: lista_contato) {
 			System.out.println(contato.getNome());
 		}
-	}
-	
-	
+	}	
 	
 }
