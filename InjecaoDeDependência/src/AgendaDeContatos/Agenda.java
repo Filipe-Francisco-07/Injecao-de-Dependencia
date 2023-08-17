@@ -6,7 +6,7 @@ import java.util.List;
 public class Agenda {
 	private List<Contato> lista_contato;
 
-	public Agenda(List<Contato> listaContato) {
+	public Agenda() {
 		this.lista_contato = new ArrayList<>();
 	}
 	public List<Contato> getLista_contato() {
@@ -20,8 +20,6 @@ public class Agenda {
 		for(Contato contato: lista_contato) {
 			System.out.println(contato.getNome());
 		}
-	}
-	
-	
+	}	
 	
 }

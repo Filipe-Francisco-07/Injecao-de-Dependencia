@@ -33,7 +33,7 @@ public class AgendaJSON extends Agenda {
 	    jsonString.deleteCharAt(jsonString.length() - 1);
 	    jsonString.append("]");
 
-	    try (Writer writer = new FileWriter("C:\\contatos.json")) {
+	    try (Writer writer = new FileWriter("contatos.json")) {
             writer.write(jsonString.toString());
             System.out.println("Gravacao concluida em json.");
         } catch (IOException e) {
