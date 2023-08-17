@@ -7,4 +7,5 @@
  */
 module InjecaoDeDependência {
 	requires java.xml;
+	requires java.sql;
 }
