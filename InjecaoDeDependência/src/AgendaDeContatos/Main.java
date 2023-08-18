@@ -21,12 +21,19 @@ public class Main {
         
         //agendaJSON.gravarJSON();
         
-        AgendaMySQL agendamsql = new AgendaMySQL();
+        //AgendaMySQL agendamsql = new AgendaMySQL();
         
-        agendamsql.adicionarContato(contato);
-        agendamsql.adicionarContato(contato2);
+        //agendamsql.adicionarContato(contato);
+        //agendamsql.adicionarContato(contato2);
         
-        agendamsql.gravarMySQL();
+        //agendamsql.gravarMySQL();
+        
+        AgendaCSV agendacsv = new AgendaCSV();
+        
+        agendacsv.adicionarContato(contato);    
+        agendacsv.adicionarContato(contato2);
+        
+        agendacsv.gravarCSV();
         
     }
 }
