@@ -21,7 +21,7 @@ public class AgendaCSV implements Agenda {
 		this.lista_contato.add(contato);
 	}
 	
-	public String formatarCSV(Contato contato) {
+	public String formatarParaCSV(Contato contato) {
 
 	return contato.getNome() + "," + contato.getDatanascimento().toString() + "," + contato.getTelefone() + "," + contato.getEmail();
 	}
@@ -31,7 +31,7 @@ public class AgendaCSV implements Agenda {
          BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
 
          for (Contato contato : lista_contato) {
-             bufferedWriter.write(formatarCSV(contato));
+             bufferedWriter.write(formatarParaCSV(contato));
 
              bufferedWriter.newLine();
          }

@@ -19,12 +19,25 @@ public class Main {
        // agendaXML.criarXML(contato2);
         
         
-        
+      /*  
         agendaJSON.adicionarContato(contato);
         agendaJSON.adicionarContato(contato2);
+        agendaJSON.adicionarContato(contato3);
+        
+        agendaJSON.gravarContatos();
+        
+        agendaJSON.mostrarLista();
+        agendaJSON.removerContato(contato3);
+        agendaJSON.mostrarLista();
+        
+        contato.setNome("carla");
+        
+        agendaJSON.alterarContato(contato);
+        agendaJSON.mostrarLista();
+        */
         
         //agendaJSON.gravarJSON();
-        
+    /*    
         AgendaMySQL agendamsql = new AgendaMySQL();
         
        agendamsql.adicionarContato(contato);
@@ -40,8 +53,7 @@ public class Main {
         agendamsql.alterarContato(contato3);
         
         agendamsql.removerContato(contato3);
-        
-        
+        */
         AgendaCSV agendacsv = new AgendaCSV();
         
         agendacsv.adicionarContato(contato);    

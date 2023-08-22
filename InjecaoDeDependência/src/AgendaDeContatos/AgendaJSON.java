@@ -1,5 +1,7 @@
 package AgendaDeContatos;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
@@ -20,7 +22,7 @@ public class AgendaJSON implements Agenda {
 		this.lista_contato.add(contato);
 	}
 	
-	public void gravarJSON() {	
+	public void gravarContatos() {	
 		StringBuilder jsonString = new StringBuilder("[");
 	    for (Contato contato : lista_contato) {
 	       jsonString.append("{");
@@ -37,33 +39,55 @@ public class AgendaJSON implements Agenda {
             writer.write(jsonString.toString());
             System.out.println("Gravacao concluida em json.");
         } catch (IOException e) {
+        	System.out.println("Erro ao gravar em json.");
             e.printStackTrace();
         }
 	}
 
-	@Override
 	public void mostrarLista() {
-		// TODO Auto-generated method stub
-		
+	    try {
+	        FileReader fileReader = new FileReader("contatos.json");
+	        BufferedReader bufferedReader = new BufferedReader(fileReader);
+	        String linha;
+
+	        while ((linha = bufferedReader.readLine()) != null) {
+	            System.out.println(linha);
+	        }
+	        
+	        bufferedReader.close();
+	    } catch (IOException e) {
+	    System.out.println("Erro ao mostrar lista json.");
+	        e.printStackTrace();
+	    }
 	}
 
-	@Override
-	public void gravarContatos() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void removerContato(Contato contato) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public void alterarContato(Contato contato) {
-		// TODO Auto-generated method stub
-		
-	}	
+	    for (Contato c : lista_contato) {
+	        if (c.getNome() == contato.getNome()) {
+	            c.setDatanascimento(contato.getDatanascimento());
+	            c.setTelefone(contato.getTelefone());
+	            c.setEmail(contato.getEmail());
+	            System.out.println("Contato "+contato.getNome()+" alterado.");
+	            break;
+	        }
+	    }
+	    gravarContatos();
+	}
+
+	public void removerContato(Contato contato) {
+	  for(Contato cont : lista_contato) {
+		  	if(cont.getEmail() == contato.getEmail()) {
+		  		lista_contato.remove(contato);  
+		  		System.out.println("Contato "+contato.getNome()+" removido.");
+		  		break;
+		  	}
+	  }
+	  gravarContatos();
+	}
+	
 
 	
+
+
+
 }
