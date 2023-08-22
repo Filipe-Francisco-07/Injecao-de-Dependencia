@@ -1,6 +1,8 @@
 package AgendaDeContatos;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -44,17 +46,43 @@ public class AgendaCSV implements Agenda {
      }
 	 }
 	public void mostrarLista() {
-		// TODO Auto-generated method stub
-		
+		System.out.println("Lista CSV: ");
+		 try {
+		        FileReader fileReader = new FileReader("agenda.csv");
+		        BufferedReader bufferedReader = new BufferedReader(fileReader);
+		        String linha;
+
+		        while ((linha = bufferedReader.readLine()) != null) {
+		            System.out.println(linha);
+		        }
+		        
+		        bufferedReader.close();
+		    } catch (IOException e) {
+		    System.out.println("Erro ao mostrar lista csv.");
+		        e.printStackTrace();
+		    }
 	}
 
 	public void removerContato(Contato contato) {
-		// TODO Auto-generated method stub
-		
-	}
-
+		  for(Contato cont : lista_contato) {
+			  	if(cont.getEmail() == contato.getEmail()) {
+			  		lista_contato.remove(contato);  
+			  		System.out.println("Contato do email "+contato.getEmail()+" removido.");
+			  		break;
+			  	}
+		  }
+		  gravarContatos();
+		}
 	public void alterarContato(Contato contato) {
-		// TODO Auto-generated method stub
-		
+	    for (Contato c : lista_contato) {
+	        if (c.getNome() == contato.getNome()) {
+	            c.setDatanascimento(contato.getDatanascimento());
+	            c.setTelefone(contato.getTelefone());
+	            c.setEmail(contato.getEmail());
+	            System.out.println("Contato do email "+contato.getEmail()+" alterado.");
+	            break;
+	        }
+	    }
+	    gravarContatos();
 	}
 }

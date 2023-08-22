@@ -6,10 +6,10 @@ import java.time.LocalDate;
 public class Main {
     public static void main(String[] args) {
     	
-    	  Agenda agendaCSV = new AgendaCSV();
-    	  Agenda agendaJSON = new AgendaJSON();
-    	  Agenda agendaMySQL = new AgendaMySQL();
-    	  Agenda agendaXML = new AgendaXML();
+    	Agenda agendaCSV = new AgendaCSV();
+    	Agenda agendaJSON = new AgendaJSON();
+    	Agenda agendaMySQL = new AgendaMySQL();
+    	Agenda agendaXML = new AgendaXML();
 
         Contato contato = new Contato("João", LocalDate.of(1990, 1, 15), "123456789", "joao@example.com\n");
         Contato contato2 = new Contato("Mateus", LocalDate.of(2003, 8, 28), "47988452010", "mateusmotorama03@gmail.com");
@@ -54,12 +54,23 @@ public class Main {
         
         agendamsql.removerContato(contato3);
         */
+        /*
         AgendaCSV agendacsv = new AgendaCSV();
         
         agendacsv.adicionarContato(contato);    
         agendacsv.adicionarContato(contato2);
+        agendacsv.adicionarContato(contato3);
         
         agendacsv.gravarContatos();
-
+        
+        agendacsv.mostrarLista();
+        
+        contato3.setNome("roberto");  
+        agendacsv.alterarContato(contato3);
+        agendacsv.mostrarLista();
+        
+        agendacsv.removerContato(contato);
+        agendacsv.mostrarLista();
+         */
     }
 }

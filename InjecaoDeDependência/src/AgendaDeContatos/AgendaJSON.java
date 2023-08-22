@@ -45,6 +45,7 @@ public class AgendaJSON implements Agenda {
 	}
 
 	public void mostrarLista() {
+		System.out.println("Lista JSON: ");
 	    try {
 	        FileReader fileReader = new FileReader("contatos.json");
 	        BufferedReader bufferedReader = new BufferedReader(fileReader);
@@ -67,7 +68,7 @@ public class AgendaJSON implements Agenda {
 	            c.setDatanascimento(contato.getDatanascimento());
 	            c.setTelefone(contato.getTelefone());
 	            c.setEmail(contato.getEmail());
-	            System.out.println("Contato "+contato.getNome()+" alterado.");
+	            System.out.println("Contato do email "+contato.getEmail()+" alterado.");
 	            break;
 	        }
 	    }
@@ -78,7 +79,7 @@ public class AgendaJSON implements Agenda {
 	  for(Contato cont : lista_contato) {
 		  	if(cont.getEmail() == contato.getEmail()) {
 		  		lista_contato.remove(contato);  
-		  		System.out.println("Contato "+contato.getNome()+" removido.");
+		  		System.out.println("Contato do email "+contato.getEmail()+" removido.");
 		  		break;
 		  	}
 	  }
