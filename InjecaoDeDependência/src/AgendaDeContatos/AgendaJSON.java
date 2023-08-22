@@ -6,7 +6,7 @@ import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AgendaJSON extends Agenda {
+public class AgendaJSON implements Agenda {
 	private List<Contato> lista_contato;
 
 	public AgendaJSON() {
@@ -39,6 +39,30 @@ public class AgendaJSON extends Agenda {
         } catch (IOException e) {
             e.printStackTrace();
         }
+	}
+
+	@Override
+	public void mostrarLista() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void gravarContatos() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void removerContato(Contato contato) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void alterarContato(Contato contato) {
+		// TODO Auto-generated method stub
+		
 	}	
 
 	

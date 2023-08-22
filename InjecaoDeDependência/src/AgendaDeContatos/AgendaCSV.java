@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AgendaCSV extends Agenda{
+public class AgendaCSV implements Agenda {
 
 	private List<Contato>lista_contato;
 	
@@ -25,7 +25,7 @@ public class AgendaCSV extends Agenda{
 
 	return contato.getNome() + "," + contato.getDatanascimento().toString() + "," + contato.getTelefone() + "," + contato.getEmail();
 	}
-	public void gravarCSV() {
+	public void gravarContatos() {
 	 try {
          FileWriter fileWriter = new FileWriter("agenda.csv");
          BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
@@ -43,4 +43,18 @@ public class AgendaCSV extends Agenda{
          e.printStackTrace();
      }
 	 }
+	public void mostrarLista() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void removerContato(Contato contato) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void alterarContato(Contato contato) {
+		// TODO Auto-generated method stub
+		
+	}
 }

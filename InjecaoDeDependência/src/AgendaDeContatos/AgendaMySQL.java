@@ -10,7 +10,7 @@ import java.sql.ResultSet;
 
 
 
-public class AgendaMySQL extends Agenda {
+public class AgendaMySQL implements Agenda {
 	
 	private List<Contato>lista_contato;
 	
@@ -26,7 +26,7 @@ public class AgendaMySQL extends Agenda {
 	}
 
 
-	public void gravarMySQL() {
+	public void gravarContatos() {
 		
 		for(Contato contato : lista_contato) {
 			if(contato != null)
@@ -56,14 +56,14 @@ public class AgendaMySQL extends Agenda {
 	    }
 	}
     
-    public void pesquisarTodos() {
+    public void mostrarLista() {
         try {
             Connection conn = ConexaoMySQL.conectar();
             String sql = "SELECT * FROM agenda.contatos;";
             PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             List<Contato> listObj = montarLista(rs);
-            mostrarLista(listObj);
+            mostraLista(listObj);
         } catch (Exception e) {
             //System.err.println("Erro: " + e.toString());
             //e.printStackTrace();
@@ -71,13 +71,13 @@ public class AgendaMySQL extends Agenda {
         }	  
     }
     
-    private void  mostrarLista(List<Contato> lista) {
+    private void  mostraLista(List<Contato> lista) {
     	for(Contato contato : lista) {
     		System.out.println(contato.getNome()+" "+contato.getDatanascimento()+" "+contato.getTelefone()+" "+contato.getEmail());
     	}
     }
     
-    public boolean alterar(Contato contato) {
+    public void alterarContato(Contato contato) {
         try {
             Connection conn = ConexaoMySQL.conectar();
             String sql = "UPDATE " + "contatos" + " SET nome = ?,data_nascimento = ?,telefone = ? WHERE email = ?;";
@@ -91,13 +91,13 @@ public class AgendaMySQL extends Agenda {
             ps.close();
             conn.close();
             System.out.println("Contato de email "+contato.getEmail()+" foi alterado.");
-            return true;
+            return;
         } catch (Exception e) {
         	 e.printStackTrace();
-             return false;
+             return;
         }
     }
-   public boolean excluir(Contato contato) {
+   public void removerContato(Contato contato) {
         try {
             Connection conn = ConexaoMySQL.conectar();
             String sql = "DELETE FROM " + "contatos"+ " WHERE nome = ?;";
@@ -107,10 +107,10 @@ public class AgendaMySQL extends Agenda {
             ps.close();
             conn.close();
             System.out.println("Contato de email "+contato.getEmail()+" foi excluido.");
-            return true;
+            return ;
         } catch (Exception e) {
         	 e.printStackTrace();
-             return false;
+             return;
         }
     }
    
@@ -132,5 +132,6 @@ public class AgendaMySQL extends Agenda {
            return null;
        }
    }
+
 	
 }

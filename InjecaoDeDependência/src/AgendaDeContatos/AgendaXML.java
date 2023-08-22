@@ -13,7 +13,7 @@ import javax.xml.transform.stream.StreamResult;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-public class AgendaXML extends Agenda {
+public class AgendaXML implements Agenda {
 	
 	private List<Contato> contato;
 	
@@ -85,4 +85,34 @@ public class AgendaXML extends Agenda {
         
         parentElement.appendChild(contatoElement);
     }
+
+	@Override
+	public List<Contato> getLista_contato() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void mostrarLista() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void gravarContatos() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void removerContato(Contato contato) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void alterarContato(Contato contato) {
+		// TODO Auto-generated method stub
+		
+	}
 }
