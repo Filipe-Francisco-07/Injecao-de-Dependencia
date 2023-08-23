@@ -15,8 +15,16 @@ public class Main {
         Contato contato2 = new Contato("Mateus", LocalDate.of(2003, 8, 28), "47988452010", "mateusmotorama03@gmail.com");
         Contato contato3 = new Contato("Filipe", LocalDate.of(2003, 8, 28), "47999286569", "filipefranciscof3@gmail.com");
       
-      // agendaXML.criarXML(contato);
-       // agendaXML.criarXML(contato2);
+        agendaXML.adicionarContato(contato);
+        agendaXML.adicionarContato(contato2);
+        agendaXML.adicionarContato(contato3);
+      
+        agendaXML.gravarContatos();
+        contato3.setNome("roger");
+        
+        agendaXML.alterarContato(contato3);
+        agendaXML.removerContato(contato3);
+        agendaXML.mostrarLista();
         
         
       /*  
@@ -37,12 +45,12 @@ public class Main {
         */
         
         //agendaJSON.gravarJSON();
-    /*    
-        AgendaMySQL agendamsql = new AgendaMySQL();
         
-       agendamsql.adicionarContato(contato);
+        AgendaMySQL agendamsql = new AgendaMySQL();
+        /*
+        agendamsql.adicionarContato(contato);
         agendamsql.adicionarContato(contato2);
-       agendamsql.adicionarContato(contato3);
+        agendamsql.adicionarContato(contato3);
         
         agendamsql.gravarContatos();
         
