@@ -24,9 +24,9 @@ public class AgendaCSV implements Agenda {
 	}
 	
 	public String formatarParaCSV(Contato contato) {
+
 	return contato.getNome() + "," + contato.getDatanascimento().toString() + "," + contato.getTelefone() + "," + contato.getEmail();
 	}
-	
 	public void gravarContatos() {
 	 try {
          FileWriter fileWriter = new FileWriter("agenda.csv");
@@ -75,10 +75,10 @@ public class AgendaCSV implements Agenda {
 		}
 	public void alterarContato(Contato contato) {
 	    for (Contato c : lista_contato) {
-	        if (c.getEmail()== contato.getNome()) {
+	        if (c.getNome() == contato.getNome()) {
 	            c.setDatanascimento(contato.getDatanascimento());
 	            c.setTelefone(contato.getTelefone());
-	            c.setNome(contato.getNome());
+	            c.setEmail(contato.getEmail());
 	            System.out.println("Contato do email "+contato.getEmail()+" alterado.");
 	            break;
 	        }
