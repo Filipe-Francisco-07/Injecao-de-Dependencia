@@ -2,6 +2,8 @@ package AgendaDeContatos;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import javax.xml.parsers.*;
@@ -15,23 +17,25 @@ import org.w3c.dom.Element;
 
 public class AgendaXML implements Agenda {
 	
-	private List<Contato> contato;
+	private List<Contato> lista_contato;
 	
 	public AgendaXML() {
-		contato = new ArrayList<Contato>();
+		lista_contato = new ArrayList<Contato>();
 	}
 	
-    public List<Contato> getContato() {
-		return contato;
-	}
-	public void adicionarContato(Contato contato) {
-		this.contato.add(contato);
+	
+    public void setlista_Contato(List<Contato> contato) {
+		this.lista_contato = contato;
 	}
 
-	public void criarXML(Contato contato) {
-		if (contato == null)
-			return;
-		else {
+	public List<Contato> getLista_contato() {
+		return lista_contato;
+	}
+	public void adicionarContato(Contato contato) {
+		this.lista_contato.add(contato);
+	}
+
+	public void gravarContatos() {
 	        try {
 	        	
 	            // Criar um DocumentBuilder para criar um novo documento XML
@@ -42,15 +46,16 @@ public class AgendaXML implements Agenda {
 	            doc.appendChild(rootElement);
 	
 	            // Adicionar informações do contato ao documento XML
-	            adicionarContato(doc, rootElement, contato);
-	
+	            for (Contato contato : lista_contato) {
+	            	addContato(doc, rootElement, contato);
+	            }
 	            // Transformar o documento em um arquivo XML
 	            TransformerFactory transformerFactory = TransformerFactory.newInstance();
 	            Transformer transformer = transformerFactory.newTransformer();
 	            DOMSource source = new DOMSource(doc);
 	
 	            // Especificar o arquivo de saída
-	            FileWriter writer = new FileWriter("D:\\agenda.xml");
+	            FileWriter writer = new FileWriter("agenda.xml");
 	            StreamResult result = new StreamResult(writer);
 	
 	            // Transformar e escrever o arquivo XML
@@ -61,10 +66,9 @@ public class AgendaXML implements Agenda {
 	        } catch (ParserConfigurationException | TransformerException | IOException e) {
 	            e.printStackTrace();
 	        }
-		}
     }
 
-    private void adicionarContato(Document doc, Element parentElement, Contato contato) {
+    private void addContato(Document doc, Element parentElement, Contato contato) {
         Element contatoElement = doc.createElement("Contato");
         
         Element nomeElement = doc.createElement("Nome");
@@ -85,34 +89,69 @@ public class AgendaXML implements Agenda {
         
         parentElement.appendChild(contatoElement);
     }
+    
+    public void removerContato(Contato contato) {
+        lista_contato.remove(contato);
+        atualizarArquivoXML();
+        System.out.println("Contato removido com sucesso.");
+    }
 
-	@Override
-	public List<Contato> getLista_contato() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public void alterarContato(Contato contato) {
+    	for (Contato c : lista_contato) {
+        	if (c.getEmail() == contato.getEmail()) {
+	            c.setDatanascimento(contato.getDatanascimento());
+	            c.setTelefone(contato.getTelefone());
+	            c.setNome(contato.getNome());         
+	            atualizarArquivoXML();
+	            System.out.println("Contato alterado com sucesso.");
+        	} else {
+        		System.out.println("Contato não encontrado.");
+        	}
+        }
+    }
 
-	@Override
-	public void mostrarLista() {
-		// TODO Auto-generated method stub
-		
-	}
+    private void atualizarArquivoXML() {
+        try {
+            Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
 
-	@Override
-	public void gravarContatos() {
-		// TODO Auto-generated method stub
-		
-	}
+            Element rootElement = doc.createElement("Agenda");
+            doc.appendChild(rootElement);
 
-	@Override
-	public void removerContato(Contato contato) {
-		// TODO Auto-generated method stub
-		
-	}
+            for (Contato contato : lista_contato) {
+                addContato(doc, rootElement, contato);
+            }
 
-	@Override
-	public void alterarContato(Contato contato) {
-		// TODO Auto-generated method stub
-		
-	}
+            TransformerFactory transformerFactory = TransformerFactory.newInstance();
+            Transformer transformer = transformerFactory.newTransformer();
+            DOMSource source = new DOMSource(doc);
+
+            FileWriter writer = new FileWriter("agenda.xml");
+            StreamResult result = new StreamResult(writer);
+
+            transformer.transform(source, result);
+
+            System.out.println("Arquivo XML atualizado com sucesso.");
+
+        } catch (ParserConfigurationException | TransformerException | IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void mostrarLista() {
+    	System.out.println("Lista XML: ");
+	    try {
+	        FileReader fileReader = new FileReader("agenda.xml");
+	        BufferedReader bufferedReader = new BufferedReader(fileReader);
+	        String linha;
+
+	        while ((linha = bufferedReader.readLine()) != null) {
+	            System.out.println(linha);
+	        }	        
+	        bufferedReader.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
 }

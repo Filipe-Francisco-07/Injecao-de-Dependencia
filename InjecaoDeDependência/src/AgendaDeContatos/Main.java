@@ -15,13 +15,17 @@ public class Main {
         Contato contato2 = new Contato("Mateus", LocalDate.of(2003, 8, 28), "47988452010", "mateusmotorama03@gmail.com");
         Contato contato3 = new Contato("Filipe", LocalDate.of(2003, 8, 28), "47999286569", "filipefranciscof3@gmail.com");
       
-        Agenda agendaPSGres = new AgendaPostgresSQL();
-        agendaPSGres.adicionarContato(contato3);
-        agendaPSGres.gravarContatos();
-        agendaPSGres.mostrarLista();
-        //agendaXML.criarXML(contato);
-        // agendaXML.criarXML(contato2);
-        
+//        Agenda agendaPSGres = new AgendaPostgresSQL();
+//        agendaPSGres.adicionarContato(contato3);
+//        agendaPSGres.gravarContatos();
+//        agendaPSGres.mostrarLista();
+//        agendaXML.adicionarContato(contato);
+//        agendaXML.adicionarContato(contato2);
+//        agendaXML.gravarContatos();
+//        agendaXML.mostrarLista();
+//        contato2.setNome("Marc@s");
+//        agendaXML.alterarContato(contato2);
+//        agendaXML.mostrarLista();
         
       /*  
         agendaJSON.adicionarContato(contato);
@@ -44,9 +48,9 @@ public class Main {
         
 //        AgendaMySQL agendamsql = new AgendaMySQL();
 //        
-//       agendamsql.adicionarContato(contato);
+//        agendamsql.adicionarContato(contato);
 //        agendamsql.adicionarContato(contato2);
-//       agendamsql.adicionarContato(contato3);
+//        agendamsql.adicionarContato(contato3);
 //        
 //        agendamsql.gravarContatos();
 //        
@@ -55,8 +59,8 @@ public class Main {
 //        contato3.setTelefone("3434343");
 //        
 //        agendamsql.alterarContato(contato3);
-//        
-//        agendamsql.removerContato(contato3);
+//
+//        agendamsql.removerContato(contato);
         
         /*
         AgendaCSV agendacsv = new AgendaCSV();
